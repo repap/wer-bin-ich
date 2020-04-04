@@ -1,6 +1,6 @@
 import { addSocket, removeSocket } from '../../actions/actions';
 
-const getWebSocketUrl = gameId => `${process.env.WEB_SOCKET_URL}/${gameId}`;
+const getWebSocketUrl = gameId => `/api/socket/${gameId}`;
 
 export default (dispatch, gameId) =>
   new Promise((resolve, reject) => {

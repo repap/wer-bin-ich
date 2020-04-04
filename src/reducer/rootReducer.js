@@ -1,8 +1,8 @@
-const { combineReducers } = require("redux");
-const game = require("./gameReducer");
+import { combineReducers } from 'redux';
+import { game } from './gameReducer';
+import { chat } from './chatReducer';
 
-const rootReducer = combineReducers({
+export default combineReducers({
   game,
+  chat,
 });
-
-module.exports = rootReducer;

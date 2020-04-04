@@ -1,8 +1,4 @@
-// listener
-// dispatcher
-// socket setup
-
-import { ADD_PLAYER, CREATE_SOCKET } from '../../actions/actionTypes';
+import { CREATE_SOCKET, SEND_MESSAGE } from '../../actions/actionTypes';
 import handleWebSocketCall from './handleWebSocketCall';
 import initWebSocket from './initWebSocket';
 
@@ -10,7 +6,7 @@ export default store => next => action => {
   switch (action.type) {
     case CREATE_SOCKET:
       return initWebSocket(store.dispatch, action.gameId);
-    case ADD_PLAYER:
+    case SEND_MESSAGE:
       return handleWebSocketCall(store, action);
     default:
       return next();

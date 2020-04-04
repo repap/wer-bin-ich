@@ -8,6 +8,7 @@ import {
   ADD_SOCKET,
   REMOVE_SOCKET,
   CREATE_SOCKET,
+  SEND_MESSAGE,
 } from './actionTypes';
 
 export const addPlayer = () => ({
@@ -38,6 +39,11 @@ export const appDispatch = payload => ({
 export const createSocket = gameId => ({
   type: CREATE_SOCKET,
   gameId,
+});
+
+export const sendMessage = message => ({
+  type: SEND_MESSAGE,
+  message,
 });
 
 export const addSocket = socket => ({

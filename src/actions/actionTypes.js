@@ -7,3 +7,4 @@ export const APP_DISPATCH = 'APP/DISPATCH';
 export const CREATE_SOCKET = 'SOCKET/CREATE';
 export const ADD_SOCKET = 'SOCKET/ADD';
 export const REMOVE_SOCKET = 'SOCKET/REMOVE';
+export const SEND_MESSAGE = 'SOCKET/MESSAGE';

@@ -4,13 +4,13 @@ import {
   SEND_ANSWER_NO,
   SEND_ANSWER_VICTORY,
   INITIALIZE_APP,
-} from "../actions/actionTypes";
+} from '../actions/actionTypes';
 
 const initialState = {
   players: [],
 };
 
-// TODO: reducer
+// eslint-disable-next-line import/prefer-default-export
 export const game = (state = initialState, action) => {
   switch (action.type) {
     case ADD_PLAYER:

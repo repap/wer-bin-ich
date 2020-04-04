@@ -10,6 +10,11 @@ const Game = () => {
   const gameStore = store({ id, socket });
   gameStore.dispatch(initializeApp());
 
+  socket.on('message', console.log);
+  socket.on('connection', console.log);
+  socket.on('error', console.log);
+  socket.on('close', console.log);
+
   return {
     id,
     socket,
