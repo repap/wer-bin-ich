@@ -5,7 +5,7 @@ const {
   SEND_ANSWER_VICTORY,
   INITIALIZE_APP,
   APP_DISPATCH,
-} = require('../actions/actionTypes');
+} = require('./actionTypes');
 
 const addPlayer = () => ({
   type: ADD_PLAYER,
@@ -29,7 +29,7 @@ const initializeApp = () => ({
 
 const appDispatch = payload => ({
   type: APP_DISPATCH,
-  payload
+  payload,
 });
 
 module.exports = {

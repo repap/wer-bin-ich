@@ -3,7 +3,7 @@ const {
   SET_NEXT_PLAYER,
   SEND_ANSWER_NO,
   SEND_ANSWER_VICTORY,
-  INITIALIZE_APP
+  INITIALIZE_APP,
 } = require('../actions/actionTypes');
 
 const initialState = {
@@ -12,7 +12,7 @@ const initialState = {
 
 // TODO: reducer
 const game = (state = initialState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case ADD_PLAYER:
       return {
         ...state,
@@ -40,7 +40,7 @@ const game = (state = initialState, action) => {
         lastAction: action.type,
       };
     default:
-      return state
+      return state;
   }
 };
 module.exports = game;
