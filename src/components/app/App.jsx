@@ -2,7 +2,7 @@ import React from 'react';
 
 const App = () => (
   <div className="container">
-    <div className="jumbotron">
+    <div className="jumbotron text-center">
       <h1 className="display-4">Wer bin ich?!?</h1>
       <p className="lead">...</p>
       <hr className="my-4" />

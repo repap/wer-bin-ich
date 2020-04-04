@@ -5,7 +5,10 @@ import {
   SEND_ANSWER_VICTORY,
   INITIALIZE_APP,
   APP_DISPATCH,
-} from "../actions/actionTypes";
+  ADD_SOCKET,
+  REMOVE_SOCKET,
+  CREATE_SOCKET,
+} from './actionTypes';
 
 export const addPlayer = () => ({
   type: ADD_PLAYER,
@@ -27,7 +30,21 @@ export const initializeApp = () => ({
   type: INITIALIZE_APP,
 });
 
-export const appDispatch = (payload) => ({
+export const appDispatch = payload => ({
   type: APP_DISPATCH,
   payload,
+});
+
+export const createSocket = gameId => ({
+  type: CREATE_SOCKET,
+  gameId,
+});
+
+export const addSocket = socket => ({
+  type: ADD_SOCKET,
+  socket,
+});
+
+export const removeSocket = () => ({
+  type: REMOVE_SOCKET,
 });
