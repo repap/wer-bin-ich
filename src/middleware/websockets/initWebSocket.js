@@ -1,6 +1,8 @@
+/* eslint-disable no-undef */
 import { addSocket, removeSocket } from '../../actions/actions';
 
-const getWebSocketUrl = gameId => `/api/socket/${gameId}`;
+const getWebSocketUrl = gameId =>
+  `ws://${window.location.host}/api/socket/${gameId}`;
 
 export default (dispatch, gameId) =>
   new Promise((resolve, reject) => {
@@ -12,7 +14,9 @@ export default (dispatch, gameId) =>
       resolve(socket);
     });
 
-    socket.addEventListener('message', e => dispatch(JSON.parse(e.data, null)));
+    socket.addEventListener('message', e =>
+      console.log('recieved message:', e),
+    );
 
     socket.addEventListener('close', () => {
       console.log('Connection closed');

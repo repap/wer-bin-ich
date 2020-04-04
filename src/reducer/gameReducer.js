@@ -1,43 +1,23 @@
-import {
-  ADD_PLAYER,
-  SET_NEXT_PLAYER,
-  SEND_ANSWER_NO,
-  SEND_ANSWER_VICTORY,
-  INITIALIZE_APP,
-} from '../actions/actionTypes';
+import { ADD_SOCKET, REQUEST_NEW_GAME_SUCCESS } from '../actions/actionTypes';
 
 const initialState = {
   players: [],
+  gameId: null,
+  socket: null,
 };
 
 // eslint-disable-next-line import/prefer-default-export
 export const game = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_PLAYER:
+    case REQUEST_NEW_GAME_SUCCESS:
       return {
         ...state,
-        lastAction: action.type,
+        gameId: action.gameId,
       };
-    case SET_NEXT_PLAYER:
-      return {
-        ...state,
-        lastAction: action.type,
-      };
-    case SEND_ANSWER_NO:
-      return {
-        ...state,
-        lastAction: action.type,
-      };
-    case SEND_ANSWER_VICTORY:
-      return {
-        ...state,
-        lastAction: action.type,
-      };
-    case INITIALIZE_APP:
+    case ADD_SOCKET:
       return {
         ...state,
         socket: action.socket,
-        lastAction: action.type,
       };
     default:
       return state;

@@ -1,6 +1,10 @@
 const WebSocket = require('ws');
 const { v4: uuidv4 } = require('uuid');
-const { INITIALIZE_APP, APP_DISPATCH } = require('../actions/actionTypes');
+const {
+  INITIALIZE_APP,
+  APP_DISPATCH,
+  SOCKET_MESSAGE,
+} = require('../actions/actionTypes');
 const { addPlayer, appDispatch } = require('../actions/actions');
 
 const socketListner = store => next => action => {
@@ -13,16 +17,18 @@ const socketListner = store => next => action => {
   socket.on('connection', (ws, message) => {
     const playerId = uuidv4();
     store.dispatch(addPlayer(playerId));
-    console.log('recieved', message);
+    // console.log('recieved', message);
 
     // TODO: reducer -> needs actions
     ws.on('message', data => {
       console.log('recieved', playerId, data);
-      const wsAction = data.action || { type: null };
+      const wsAction = JSON.parse(data) || { type: null };
 
       switch (wsAction.type) {
+        case SOCKET_MESSAGE:
+          return store.dispatch(wsAction);
         default:
-          store.dispatch(appDispatch({ payload: data }));
+          return null;
       }
     });
   });
@@ -37,7 +43,7 @@ const socketDispatcher = store => next => action => {
 
     socket.clients.forEach(client => {
       if (client.readyState === WebSocket.OPEN) {
-        client.send(JSON.stringify(action.payload));
+        client.send(JSON.stringify(action));
       }
     });
   }

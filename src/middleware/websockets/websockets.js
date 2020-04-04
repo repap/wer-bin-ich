@@ -9,6 +9,6 @@ export default store => next => action => {
     case SEND_MESSAGE:
       return handleWebSocketCall(store, action);
     default:
-      return next();
+      return next(action);
   }
 };

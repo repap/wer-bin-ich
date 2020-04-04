@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Chat from '../chat/Chat';
-import { createSocket } from '../../actions/actions';
+import { createSocket, requestNewGame } from '../../actions/actions';
 
 const App = () => {
   const dispatch = useDispatch();
-  const socket = useSelector(s => s.game.socket);
+  const { gameId, socket } = useSelector(s => s.game);
 
   useEffect(() => {
-    if (!socket) {
-      dispatch(createSocket(0));
+    if (gameId && !socket) {
+      dispatch(createSocket(gameId));
     }
-  }, [socket, dispatch]);
+  }, [gameId, dispatch, socket]);
 
   return (
     <div className="container">
@@ -21,7 +21,11 @@ const App = () => {
         <hr className="my-4" />
         <p>...</p>
         <div className="row justify-content-md-center">
-          <button className=" btn btn-primary btn-lg" type="button">
+          <button
+            className="btn btn-primary btn-lg"
+            type="button"
+            onClick={() => dispatch(requestNewGame())}
+          >
             Neues Spiel erstellen
           </button>
         </div>

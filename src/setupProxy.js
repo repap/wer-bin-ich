@@ -8,6 +8,7 @@ module.exports = function (app) {
     createProxyMiddleware({
       target: `http://localhost:${API_PORT}`,
       changeOrigin: true,
+      ws: true,
     }),
   );
 };

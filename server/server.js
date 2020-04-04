@@ -6,9 +6,11 @@ const Game = require('../game/game');
 
 const PORT = process.env.API_PORT || 9000;
 const app = express();
+const server = http.createServer(app);
+
 const games = [];
 
-app.route('/api/game').get((req, res) => {
+app.route('/api/game').post((req, res) => {
   const game = Game();
   games.push(game);
 
@@ -17,15 +19,15 @@ app.route('/api/game').get((req, res) => {
   });
 });
 
-const server = http.createServer(app);
-
 server.on('upgrade', function upgrade(request, socket, head) {
   const { pathname } = url.parse(request.url);
+  console.log('request', pathname);
 
   const game = games.find(g => pathname === `/api/socket/${g.id}`);
   if (!game) {
     socket.destroy();
   } else {
+    console.log('connection request', game.id);
     game.socket.handleUpgrade(request, socket, head, function done(ws) {
       game.socket.emit('connection', ws, request);
     });
