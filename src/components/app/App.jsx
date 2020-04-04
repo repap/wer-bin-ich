@@ -1,20 +1,19 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { addPlayer } from '../../actions/actions';
 
-const App = () => {
-  const dispatch = useDispatch();
-  return (
-    <div>
-      <header>
-        <h1>App</h1>
-      </header>
-      <section>
-        {/* eslint-disable-next-line react/button-has-type */}
-        <button onClick={() => dispatch(addPlayer())}>Button</button>
-      </section>
+const App = () => (
+  <div className="container">
+    <div className="jumbotron">
+      <h1 className="display-4">Wer bin ich?!?</h1>
+      <p className="lead">...</p>
+      <hr className="my-4" />
+      <p>...</p>
+      <div className="row justify-content-md-center">
+        <button className=" btn btn-primary btn-lg" type="button">
+          Neues Spiel erstellen
+        </button>
+      </div>
     </div>
-  );
-};
+  </div>
+);
 
 export default App;
