@@ -16,8 +16,8 @@ app.get("/test", (req, res) => res.send("HELLO WORLD :D"));
 
 wss.on("connection", (ws: WebSocket) => ws.send("Hello World"));
 
-server.listen(config.PORT, () => {
+server.listen(config.PORT, () =>
   console.log(
     `Server started on port ${(server.address() as AddressInfo).port} :)`
-  );
-});
+  )
+);
