@@ -10,7 +10,7 @@ const server = createServer(app);
 
 app.use(morgan("combined"));
 
-const wss = new WebSocket.Server({ server });
+const wss = new WebSocket.Server({ server, path: "/ws" });
 
 app.get("/test", (req, res) => res.send("HELLO WORLD :D"));
 
